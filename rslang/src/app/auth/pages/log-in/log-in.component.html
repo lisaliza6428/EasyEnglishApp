@@ -1,0 +1,50 @@
+<div class="container">
+  <form class="form" [formGroup]="formGroup" novalidate (submit)="onSubmit()">
+    <div class="form__title">
+      <span class="form__title-login">Вход</span>
+      <span class="form__title-divider"> /</span>
+      <span class="form__title-signup" routerLink="../sign-up">Регистрация</span>
+    </div>
+    <h3 class="form__field-title">email</h3>
+    <input class="form__field-input" formControlName="email" type="text" />
+    <div class="error-container">
+      <div *ngIf="_email.invalid && (_email.touched || _email.dirty || _email.untouched)">
+        <span class="message" *ngIf="_email.errors?.['required']">Введите email</span>
+        <span class="message" *ngIf="_email.errors?.['email']">Этот email невалиден</span>
+      </div>
+    </div>
+
+    <h3 class="form__field-title">Введите пароль</h3>
+    <div class="form__input-wrap">
+      <input
+        class="form__field-input password"
+        formControlName="password"
+        name="password"
+        id="password"
+        [type]="show ? 'text' : 'password'"
+      />
+      <button (click)="toggleVisibility($event)" [class]="show ? 'show' : 'hide'"></button>
+    </div>
+    <div class="error-container">
+      <div *ngIf="_password.invalid && (_password.touched || _password.dirty || _password.untouched)">
+        <span class="message" *ngIf="_password.errors?.['required']">Введите пароль</span>
+        <span class="message" *ngIf="_password.errors?.['validateUpperCase'] && _password.dirty">
+          Хотя бы одна заглавная буква</span
+        >
+        <span class="message" *ngIf="_password.errors?.['validateLowerCase'] && _password.dirty">
+          Хотя бы одна строчная буква</span
+        >
+        <span class="message" *ngIf="_password.errors?.['validateNumbers'] && _password.dirty">
+          Хотя бы одна цифра</span
+        >
+        <span class="message" *ngIf="_password.errors?.['validateSpecial'] && _password.dirty">
+          Хотя бы один специальный символ (#?!@$%^&*-)</span
+        >
+        <span class="message" *ngIf="_password.errors?.['minlength']">Минимум 8 символов</span>
+      </div>
+    </div>
+
+    <button class="form__submit" [disabled]="formGroup.invalid" type="submit">Войти</button>
+    <button (click)="authService.getNewToken('629d10c6f06d600016e4d787')">Click</button>
+  </form>
+</div>

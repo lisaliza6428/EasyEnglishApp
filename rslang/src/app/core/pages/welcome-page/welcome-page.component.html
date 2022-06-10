@@ -1,0 +1,8 @@
+<div class="container">
+  <div class="content">
+    <h2>Welcome to RSLang!</h2>
+    <p class="descr" *ngIf="!authService.isLogged">You need to log in to get started:</p>
+    <app-auth-button></app-auth-button>
+    <button class="nav__link" *ngIf="authService.isLogged" routerLink="/dictionary">Go to Dictionary</button>
+  </div>
+</div>

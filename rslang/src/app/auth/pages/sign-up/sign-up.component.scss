@@ -1,0 +1,118 @@
+.form {
+  width: 420px;
+  border: 1px solid black;
+  border-radius: 5px;
+  margin: 100px auto;
+  padding: 20px;
+  border: 2px solid #639fff;
+
+  .form__title {
+    color: #2f80ed;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 21px;
+    margin: 10px 0;
+    &-login {
+      border-bottom: solid 1px #2f80ed;
+      cursor: pointer;
+      font-weight: 400;
+    }
+    &-divider {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 26px;
+    }
+    &-signup {
+      font-size: 28px;
+    }
+  }
+  .form__field-title {
+    font-family: "Roboto";
+    font-style: normal;
+    font-weight: 400;
+    font-size: 11px;
+    line-height: 12px;
+    color: #2f80ed;
+    margin: 7px 0 3px 0;
+  }
+  .form__input-wrap {
+    position: relative;
+    button {
+      position: absolute;
+      background-color: transparent;
+      background-repeat: no-repeat;
+      width: 30px;
+      height: 30px;
+      border: none;
+      cursor: pointer;
+      right: 5px;
+      top: 10px;
+      &.show {
+        background-image: url("../../../../assets/svg/eye-show.svg");
+      }
+      &.hide {
+        background-image: url("../../../../assets/svg/eye-hide.svg");
+      }
+    }
+  }
+  .form__field-input {
+    width: 100%;
+    height: 45px;
+    background-color: #f1ffff;
+    border: 1px solid #e0e0e0;
+    padding: 5px 10px;
+    font-size: 17px;
+    border: 1px solid #639fff;
+    color: blue;
+    &:focus {
+      outline: none;
+      border: 1px solid blue;
+    }
+  }
+  .form__submit {
+    display: block;
+    width: 180px;
+    height: 35px;
+    margin: 10px 0 0 auto;
+    color: white;
+    background-color: #2f80ed;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    &:disabled {
+      background-color: #fd0481;
+      cursor: auto;
+    }
+  }
+  .buttons-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: 10px;
+  }
+
+  .error-container {
+    min-height: 18px;
+  }
+  .message {
+    font-size: 14px;
+    display: block;
+    margin-top: 2px;
+    color: #fd0481;
+  }
+  .ng-invalid.ng-touched {
+    border: #fd0481 1px solid;
+  }
+  .ng-invalid.ng-dirty {
+    border: #fd0481 1px solid;
+  }
+  .ng-valid.ng-touched {
+    border: #639fff 1px solid;
+  }
+}

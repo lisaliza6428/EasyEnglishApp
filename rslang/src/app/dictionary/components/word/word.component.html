@@ -1,0 +1,29 @@
+<div
+  class="card-wrapper"
+  *ngFor="
+    let word of apiService.words | paginate: { itemsPerPage: 20, currentPage: apiService.currentPage, totalItems: 600 }
+  "
+>
+  <div class="div">
+    <div class="word-wrapper">
+      <button type="button" class="sound" [id]="word.id" (click)="playAudio(word.id)"></button>
+      <span class="word">{{ word.word }}</span>
+      <span class="word-transcription"> {{ word.transcription }}</span>
+      <span class="word-translate">{{ word.wordTranslate }}</span>
+    </div>
+    <p class="word-title">Значение:</p>
+    <p [innerHtml]="word.textMeaning"></p>
+    <p>{{ word.textMeaningTranslate }}</p>
+    <p class="word-title">Пример:</p>
+    <p [innerHtml]="word.textExample"></p>
+    <p>{{ word.textExampleTranslate }}</p>
+    <div class="answers">answers</div>
+    <div class="button-wrapper ${buttonsClass}">
+      <button type="button" class="add-to-difficult" [id]="word.id">difficultButtonText</button>
+      <button type="button" class="add-to-studied ${studiedClass} ${hideStudiedBtn}" [id]="word.id">
+        studiedButtonText
+      </button>
+    </div>
+  </div>
+  <img class="word-image" src="https://rslang-team32.herokuapp.com/{{ word.image }}" alt="рр" />
+</div>

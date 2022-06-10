@@ -1,0 +1,17 @@
+<header>
+  <div class="container">
+    <div class="header">
+      <app-burger-menu></app-burger-menu>
+      <div class="header__right">
+        <div class="header__user" *ngIf="authService.isLogged">
+          <img class="header__user-icon" src="../../../../assets/svg/user.svg" alt="user" />
+          <span class="header__user-name">{{ name }}</span>
+        </div>
+        <app-auth-button></app-auth-button>
+        <button class="header__button header__button--out" *ngIf="authService.isLogged" (click)="openDialog()">
+          Выйти
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

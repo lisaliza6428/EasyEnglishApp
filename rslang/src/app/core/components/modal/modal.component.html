@@ -1,0 +1,11 @@
+<div class="dialog">
+  <h3 class="dialog__title">{{ modalData.message }}</h3>
+  <mat-dialog-actions align="center">
+    <button class="dialog__button" mat-button [mat-dialog-close]="true" type="button" (click)="actionFunction()">
+      {{ modalData.actionButtonText }}
+    </button>
+    <button class="dialog__button" mat-button mat-dialog-close (click)="closeModal()">
+      {{ modalData.cancelButtonText }}
+    </button>
+  </mat-dialog-actions>
+</div>

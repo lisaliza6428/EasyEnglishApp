@@ -1,0 +1,76 @@
+header {
+  padding: 15px 0;
+  background-color: #320d3e;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  //background-color: rgb(187, 1, 153);
+}
+.header__left {
+  color: white;
+  font-size: 26px;
+  transform: scale(1);
+  cursor: pointer;
+
+  &:hover {
+    color: rgb(255, 245, 240);
+  }
+}
+.header__right {
+  display: flex;
+}
+.header__button {
+  padding: 5px 10px;
+  font-weight: 600;
+  font-size: 20px;
+  background-color: white;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-left: 10px;
+  color: #320d3e;
+  cursor: pointer;
+  font-size: 16px;
+  &--out {
+    width: 90px;
+  }
+  &--in {
+    width: 190px;
+  }
+}
+
+.header__edit-button{
+  background-color: transparent;
+  width: 25px;
+  height: 25px;
+  border: none;
+  cursor: pointer;
+}
+.header__edit-button-img{
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+}
+
+.header__user {
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 10px;
+  .header__user-icon {
+    width: 22px;
+  }
+  .header__user-name {
+    font-size: 20px;
+    margin-left: 3px;
+    color: white;
+  }
+  .header__edit-button {
+    margin-left: 10px;
+  }
+}
+
+

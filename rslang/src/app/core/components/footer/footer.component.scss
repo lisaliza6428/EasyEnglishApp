@@ -1,0 +1,28 @@
+footer {
+  background-color: #320d3e;
+}
+.footer {
+  height: 55px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 500;
+  color: aliceblue;
+  //background-color: rgb(187, 1, 153);
+}
+a {
+  color: aliceblue;
+  text-decoration: none;
+}
+
+.footer__school-logo {
+  width: 90px;
+}
+.footer__dev {
+  display: flex;
+  align-items: center;
+}
+.footer__git {
+  width: 22px;
+  margin-right: 5px;
+}

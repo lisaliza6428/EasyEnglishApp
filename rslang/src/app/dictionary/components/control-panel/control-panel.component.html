@@ -1,0 +1,26 @@
+<div class="panel">
+  <div class="controls">
+    <select class="chapter-select" name="" id="" (change)="handleSelectEvent($event)">
+      <option value="0">Раздел 1</option>
+      <option value="1">Раздел 2</option>
+      <option value="2">Раздел 3</option>
+      <option value="3">Раздел 4</option>
+      <option value="4">Раздел 5</option>
+      <option value="5">Раздел 6</option>
+      <option value="6">Мои слова</option>
+    </select>
+    <div class="pagination" *ngIf="apiService.currentGroup !== 6">
+      <pagination-controls
+        [maxSize]="7"
+        [previousLabel]="''"
+        [nextLabel]="''"
+        (pageChange)="pageChangeEvent($event)"
+        align="center"
+      ></pagination-controls>
+    </div>
+  </div>
+  <div class="game">
+    <a class="game__link" routerLink="/games">Игра "Спринт"</a>
+    <a class="game__link" routerLink="/games">Игра "Аудиовызов"</a>
+  </div>
+</div>

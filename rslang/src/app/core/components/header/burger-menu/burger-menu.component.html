@@ -1,0 +1,13 @@
+<div class="but">
+  <button class="menu-button" [matMenuTriggerFor]="menu" mat-button>
+    <mat-icon>menu</mat-icon>
+  </button>
+  <a class="app-title" routerLink="/welcome"> RSLang</a>
+</div>
+
+<mat-menu #menu="matMenu">
+  <a class="menu__item" mat-menu-item routerLink="/welcome"> Главная </a>
+  <a class="menu__item" mat-menu-item routerLink="/dictionary"> Учебник </a>
+  <a class="menu__item" mat-menu-item routerLink="/games"> Игры </a>
+  <a class="menu__item" mat-menu-item routerLink="/statistics"> Статистика </a>
+</mat-menu>

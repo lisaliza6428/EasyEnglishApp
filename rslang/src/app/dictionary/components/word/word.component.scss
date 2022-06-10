@@ -1,0 +1,118 @@
+
+
+.word-card {
+  display: flex;
+  height: 310px;
+  border: 1px solid #400255;
+  margin: 10px 0;
+  flex-direction: row;
+  justify-content: space-between;
+  column-gap: 10px;
+  border-radius: 10px;
+  @media screen and (max-width: 1000px) {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    height: auto;
+    column-gap: 0;
+  }
+}
+.div {
+  padding:  20px;
+}
+.card-wrapper {
+  margin: 20px 0;
+  display: flex;
+  border: #400255 1px solid;
+  border-radius: 10px;
+  flex-direction: row;
+  align-content: center;
+  justify-content: space-between;
+  text-align: justify;
+  //width: 65%;
+  @media screen and (max-width: 1000px) {
+   // width: 95%;
+  }
+}
+.word-title {
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: 20px;
+}
+.word-image {
+  width: 35%;
+  object-fit: cover;
+  border-radius: 0 10px 10px 0;
+  @media screen and (max-width: 1000px) {
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    margin-top: 10px;
+  }
+}
+.word-wrapper {
+  display: flex;
+  margin-top: 5px;
+  align-items: center;
+  * {
+    margin-right: 25px;
+  }
+  @media screen and (max-width: 650px) {
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+.word {
+  font-size: 22px;
+  font-weight: bold;
+}
+.word-transcription {
+  color: #aa06e0;
+}
+
+.button-wrapper {
+  display: flex;
+  gap: 10px;
+  * {
+    font-family: "Roboto", sans-serif;
+    border: 1px solid #400255;
+    background-color: #faeef9;
+    border-radius: 10px;
+    width: 50%;
+    height: 30px;
+    font-size: 15px;
+    margin: 5px 0;
+    cursor: pointer;
+  }
+  @media screen and (max-width: 500px) {
+    flex-wrap: wrap;
+    gap: 0px;
+    * {
+      width: 100%;
+    }
+  }
+  .difficult {
+    background-color: #7986f8;
+    color: #ffffff;
+  }
+  .studied {
+    background-color: #df89fc;
+    color: #ffffff;
+  }
+}
+.sound {
+  width: 40px;
+  height: 40px;
+  background-image: url("../../../../assets/svg/headphones.svg");
+  background-color: #fff;
+  border: none;
+  background-repeat: no-repeat;
+  object-fit: cover;
+  cursor: pointer;
+  transition: 0.5s;
+  &.active {
+    transition: 0.5s;
+    transform: scale(1.2);
+    z-index: 0;
+  }
+}
