@@ -7,16 +7,18 @@ import { Router } from '@angular/router';
 import { ErrorModel } from '../models/models';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ModalComponent } from '../../core/components/modal/modal.component';
+import { AuthService } from './auth.service';
 
 @Injectable()
 export class ErrorInterceptor implements HttpInterceptor {
-  constructor(public router: Router, public dialog: MatDialog) {}
+  constructor(public router: Router, public dialog: MatDialog, public authService: AuthService) {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
     const token = this.getToken();
     request = request.clone({
       setHeaders: { Authorization: `Bearer ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
     });
+    console.log(request);
     return next.handle(request).pipe(
       catchError((error: ErrorModel) => {
         switch (error.status) {
@@ -40,7 +42,8 @@ export class ErrorInterceptor implements HttpInterceptor {
   getToken() {
     const data = localStorage.getItem('token') || '';
     if (data) {
-      const token = JSON.parse(data).token;
+      const token = JSON.parse(data).refreshToken;
+      //const token = JSON.parse(data).token;
       return token;
     }
   }
@@ -49,21 +52,22 @@ export class ErrorInterceptor implements HttpInterceptor {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       name: 'error401',
-      message: 'modals.error401.message',
-      actionButtonText: 'modals.error401.confirm',
-      cancelButtonText: 'modals.error401.cancel',
+      message: 'Ваша сессия истекла. Чтобы продолжить, необходимо войти',
+      actionButtonText: 'Войти',
+      cancelButtonText: 'Закрыть',
     };
     this.dialog.open(ModalComponent, dialogConfig);
-    this.router.navigateByUrl('welcome');
+    this.authService.logOut();
+    this.router.navigateByUrl('auth/log-in');
   }
 
   error403Action() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       name: 'error403',
-      message: 'modals.error403.message',
-      actionButtonText: 'modals.error403.confirm',
-      cancelButtonText: 'modals.error403.cancel',
+      message: 'Неправильные email или пароль',
+      actionButtonText: 'Ок',
+      cancelButtonText: 'Закрыть',
     };
     this.dialog.open(ModalComponent, dialogConfig);
   }
@@ -72,9 +76,9 @@ export class ErrorInterceptor implements HttpInterceptor {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       name: 'error409',
-      message: 'modals.error409.message',
-      actionButtonText: 'modals.error409.confirm',
-      cancelButtonText: 'modals.error409.cancel',
+      message: 'Такой пользователь уже существует',
+      actionButtonText: 'Ок',
+      cancelButtonText: 'Закрыть',
     };
     this.dialog.open(ModalComponent, dialogConfig);
   }

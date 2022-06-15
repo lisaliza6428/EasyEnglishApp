@@ -19,9 +19,16 @@
     <p>{{ word.textExampleTranslate }}</p>
     <div class="answers">answers</div>
     <div class="button-wrapper ${buttonsClass}">
-      <button type="button" class="add-to-difficult" [id]="word.id">difficultButtonText</button>
-      <button type="button" class="add-to-studied ${studiedClass} ${hideStudiedBtn}" [id]="word.id">
-        studiedButtonText
+      <button type="button" class="add-to-difficult" [id]="word.id" (click)="addToDifficultAction(word.id)">
+        Добавить в сложные
+      </button>
+      <button
+        type="button"
+        class="add-to-studied ${studiedClass} ${hideStudiedBtn}"
+        [id]="word.id"
+        (click)="addToStudiedAction(word.id)"
+      >
+        Добавить в изученные
       </button>
     </div>
   </div>

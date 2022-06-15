@@ -7,7 +7,6 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  //background-color: rgb(187, 1, 153);
 }
 .header__left {
   color: white;
@@ -41,18 +40,6 @@ header {
   }
 }
 
-.header__edit-button{
-  background-color: transparent;
-  width: 25px;
-  height: 25px;
-  border: none;
-  cursor: pointer;
-}
-.header__edit-button-img{
-  width: 25px;
-  height: 25px;
-  background-color: transparent;
-}
 
 .header__user {
   cursor: pointer;
@@ -62,14 +49,13 @@ header {
   margin: 0 10px;
   .header__user-icon {
     width: 22px;
+    filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(1%) hue-rotate(327deg) brightness(102%)
+    contrast(101%);
   }
   .header__user-name {
     font-size: 20px;
     margin-left: 3px;
     color: white;
-  }
-  .header__edit-button {
-    margin-left: 10px;
   }
 }
 

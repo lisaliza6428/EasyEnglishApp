@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './core/pages/error-page/error-page.component';
 import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
+import { GamesPageComponent } from './core/pages/games-page/games-page.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,10 @@ const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomePageComponent,
+  },
+  {
+    path: 'games',
+    component: GamesPageComponent,
   },
   {
     path: 'dictionary',

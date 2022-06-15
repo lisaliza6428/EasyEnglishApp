@@ -23,7 +23,7 @@ export class ControlPanelComponent implements OnInit {
 
   pageChangeEvent(page: number) {
     this.currentPage = page;
-    this.apiService.currentPageChange.next(page);
+    this.apiService.currentPageChange.next(this.currentPage);
     this.apiService.getWords();
   }
-}
+} 

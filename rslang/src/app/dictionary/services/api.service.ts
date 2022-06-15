@@ -1,4 +1,4 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { BASE_URL, WORDS_PER_PAGE } from '../../shared/consts';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
@@ -11,7 +11,9 @@ import { AuthDataModel } from '../../auth/models/models';
   providedIn: 'root',
 })
 export class ApiService {
-  currentPage = 0;
+  userId = '';
+
+  currentPage = 1;
 
   currentGroup = 0;
 
@@ -33,36 +35,45 @@ export class ApiService {
     this.currentGroupChange.subscribe((value) => {
       this.currentGroup = value;
     });
-    this.getWords();
+    this.getUserId();
+  }
+
+  getUserId() {
+    const auth = localStorage.getItem('token');
+    if (auth) {
+      const authData: AuthDataModel = JSON.parse(auth);
+      this.userId = authData.userId;
+    }
   }
 
   getWords() {
+    console.log(this.authService.isLogged);
     if (this.authService.isLogged) {
-      const auth = localStorage.getItem('token');
-      //console.log(auth);
-      let userId = '';
-      if (auth) {
-        const authData: AuthDataModel = JSON.parse(auth);
-        userId = authData.userId;
-      }
       this.http
         .get<any[]>(
           BASE_URL +
-            `users/${userId}/aggregatedWords?&filter={"$and": [{"group": ${this.currentGroup}}, {"page": ${this.currentPage}}]}&wordsPerPage=${WORDS_PER_PAGE}`
+            `users/${this.userId}/aggregatedWords?&filter={"$and": [{"group": ${this.currentGroup}}, {"page": ${
+              this.currentPage - 1
+            }}]}&wordsPerPage=${WORDS_PER_PAGE}`
         )
         .subscribe((value) => {
-          //console.log(value);
-          this.words = value[0].paginatedResults;
+          const filtered = value[0].paginatedResults.sort((a: WordModel, b: WordModel) => a.word.localeCompare(b.word));
+          this.words = filtered;
         });
     } else {
       this.http
         .get<any[]>(
-          BASE_URL + `words?page=${this.currentPage}&group=${this.currentGroup}&wordsPerPage=${WORDS_PER_PAGE}`
+          BASE_URL + `words?page=${this.currentPage - 1}&group=${this.currentGroup}&wordsPerPage=${WORDS_PER_PAGE}`
         )
         .subscribe((value) => {
-          //console.log(value);
-          this.words = value;
+          this.words = value.sort((a: WordModel, b: WordModel) => a.word.localeCompare(b.word));
         });
     }
+  }
+
+  updateUserWord(wordId: string, word: any) {
+    this.http.put<any[]>(BASE_URL + `/users/${this.userId}/words/${wordId}`, word).subscribe((value) => {
+      console.log(value);
+    });
   }
 }

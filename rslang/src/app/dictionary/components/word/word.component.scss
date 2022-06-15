@@ -1,6 +1,7 @@
 
 
 .word-card {
+  width: 100%;
   display: flex;
   height: 310px;
   border: 1px solid #400255;
@@ -29,7 +30,7 @@
   align-content: center;
   justify-content: space-between;
   text-align: justify;
-  //width: 65%;
+
   @media screen and (max-width: 1000px) {
    // width: 95%;
   }
@@ -50,6 +51,7 @@
   }
 }
 .word-wrapper {
+  width: 100%;
   display: flex;
   margin-top: 5px;
   align-items: center;
@@ -78,7 +80,7 @@
     border: 1px solid #400255;
     background-color: #faeef9;
     border-radius: 10px;
-    width: 50%;
+    width: 200px;
     height: 30px;
     font-size: 15px;
     margin: 5px 0;

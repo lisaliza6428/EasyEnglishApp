@@ -18,6 +18,7 @@ import { PreloaderComponent } from './core/components/preloader/preloader.compon
 import { BurgerMenuComponent } from './core/components/header/burger-menu/burger-menu.component';
 import { ApiService } from './dictionary/services/api.service';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { GamesPageComponent } from './core/pages/games-page/games-page.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AuthButtonComponent,
     PreloaderComponent,
     BurgerMenuComponent,
+    GamesPageComponent,
   ],
   imports: [
     BrowserModule,

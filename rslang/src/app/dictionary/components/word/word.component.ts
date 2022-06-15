@@ -12,7 +12,15 @@ export class WordComponent implements OnInit {
   ngOnInit(): void {}
 
   playAudio(wordId: string) {
-
     console.log('click');
+  }
+
+  addToDifficultAction(wordId: string) {
+    const word = { difficulty: 'hard', optional: { answers: ' ' } };
+    this.apiService.updateUserWord(wordId, word);
+  }
+
+  addToStudiedAction(wordId: string) {
+    console.log(wordId);
   }
 }
