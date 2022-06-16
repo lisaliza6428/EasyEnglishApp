@@ -24,7 +24,7 @@
 
 .game {
   display: flex;
-  color:  #320d3e;
+  color: #320d3e;
   column-gap: 10px;
   * {
     display: inline-block;
@@ -32,10 +32,10 @@
     padding: 5px;
     width: 150px;
     height: 34px;
-    border: 2px solid  #320d3e;
+    border: 2px solid #320d3e;
     border-radius: 10px;
     text-decoration: none;
-    color:  #320d3e;
+    color: #320d3e;
     text-align: center;
   }
 }
