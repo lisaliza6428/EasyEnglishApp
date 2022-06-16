@@ -1,0 +1,24 @@
+.scroll-button {
+  width: 70px;
+  height: 70px;
+  border: 2px solid #400255;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+}
+.scroll-button::before {
+  content: "▲";
+  font-size: 30px;
+  color: #400255;
+}
+.scroll-button-wrapper {
+  position: fixed;
+  bottom: 60px;
+  right: 40px;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+.show-scroll-button {
+  opacity: 1;
+  transition: all 0.2s ease-in-out;
+}
