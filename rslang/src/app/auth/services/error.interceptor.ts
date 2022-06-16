@@ -18,7 +18,7 @@ export class ErrorInterceptor implements HttpInterceptor {
     request = request.clone({
       setHeaders: { Authorization: `Bearer ${token}`, Accept: 'application/json', 'Content-Type': 'application/json' },
     });
-    console.log(request);
+    //console.log(request);
     return next.handle(request).pipe(
       catchError((error: ErrorModel) => {
         switch (error.status) {

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BASE_URL, WORDS_PER_PAGE } from '../../shared/consts';
+import { BASE_URL, emptyUserStatistics, WORDS_PER_PAGE } from '../../shared/consts';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import { Router } from '@angular/router';
@@ -47,7 +47,7 @@ export class ApiService {
   }
 
   getWords() {
-    console.log(this.authService.isLogged);
+    //console.log(this.authService.isLogged);
     if (this.authService.isLogged) {
       this.http
         .get<any[]>(
@@ -59,6 +59,7 @@ export class ApiService {
         .subscribe((value) => {
           const filtered = value[0].paginatedResults.sort((a: WordModel, b: WordModel) => a.word.localeCompare(b.word));
           this.words = filtered;
+          console.log(filtered);
         });
     } else {
       this.http
@@ -67,13 +68,75 @@ export class ApiService {
         )
         .subscribe((value) => {
           this.words = value.sort((a: WordModel, b: WordModel) => a.word.localeCompare(b.word));
+          console.log(this.words);
         });
     }
   }
 
-  updateUserWord(wordId: string, word: any) {
-    this.http.put<any[]>(BASE_URL + `/users/${this.userId}/words/${wordId}`, word).subscribe((value) => {
+  createUserWord(wordId: string, word: any) {
+    this.http.post<any[]>(BASE_URL + `users/${this.userId}/words/${wordId}`, { ...word }).subscribe((value) => {
       console.log(value);
     });
+  }
+
+  updateUserWord(wordId: string, word: any) {
+    this.http.put<any[]>(BASE_URL + `users/${this.userId}/words/${wordId}`, { ...word }).subscribe((value) => {
+      console.log(value);
+    });
+  }
+
+  getUserHardWords() {
+    this.http
+      .get<any[]>(
+        BASE_URL +
+          `users/${this.userId}/aggregatedWords?&wordsPerPage=3600&filter={"$and":[{"userWord.difficulty":"hard"}]}`
+      )
+      .subscribe((value) => {
+        this.words = value[0].paginatedResults.sort((a: WordModel, b: WordModel) => a.word.localeCompare(b.word));
+      });
+  }
+
+  getUserStatistics() {
+    console.log(this.userId);
+    return this.http.get<any[]>(BASE_URL + `users/${this.userId}/statistics`).subscribe(
+      (value) => {
+        console.log(value);
+      },
+      (error) => {
+        if (error.status === 404) {
+          this.updateUserStatistics(emptyUserStatistics);
+        }
+      }
+    );
+  }
+
+  getStatistics() {
+    return this.http.get<any>(BASE_URL + `users/${this.userId}/statistics`);
+  }
+
+  updateUserStatistics(body: any) {
+    this.http.put<any[]>(BASE_URL + `users/${this.userId}/statistics`, body).subscribe((value) => {
+      console.log(value);
+    });
+  }
+
+  updateStatisticFromDictionaryPage(param: string) {
+    this.http.get<any>(BASE_URL + `users/${this.userId}/statistics`).subscribe(
+      (value) => {
+        if (param === 'add') {
+          value.learnedWords++;
+        }
+        if (param === 'subtract') {
+          value.learnedWords--;
+        }
+        delete value.id;
+        this.updateUserStatistics(value);
+      },
+      (error) => {
+        if (error.status === 404) {
+          this.updateUserStatistics(emptyUserStatistics);
+        }
+      }
+    );
   }
 }

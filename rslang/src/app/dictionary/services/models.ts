@@ -21,3 +21,16 @@ export interface WordModel {
   };
   //listProps: Array<Object>;
 }
+
+export interface StatisticsModel {
+  id?: string;
+  learnedWords: number;
+  optional: {
+    games: GamesStatisticModel;
+  };
+}
+
+export interface GamesStatisticModel {
+  sprint: any[];
+  audioCall: any[];
+}

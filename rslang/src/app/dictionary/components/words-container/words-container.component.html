@@ -1,1 +1,9 @@
-<app-word></app-word>
+<div class="word-container">
+  <app-word
+    *ngFor="
+      let word of apiService.words
+        | paginate: { itemsPerPage: 20, currentPage: apiService.currentPage, totalItems: 600 }
+    "
+    [word]="word"
+  ></app-word>
+</div>

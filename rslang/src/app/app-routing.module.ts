@@ -4,6 +4,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './core/pages/error-page/error-page.component';
 import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
 import { GamesPageComponent } from './core/pages/games-page/games-page.component';
+import { StatisticsPageComponent } from './core/pages/statistics-page/statistics-page.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'games',
     component: GamesPageComponent,
+  },
+  {
+    path: 'statistics',
+    component: StatisticsPageComponent,
   },
   {
     path: 'dictionary',

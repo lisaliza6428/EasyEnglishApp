@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "project-management-app": {
+    "lang-app": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/project-management-app",
+            "outputPath": "dist/lang-app",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -73,10 +73,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "project-management-app:build:production"
+              "browserTarget": "lang-app:build:production"
             },
             "development": {
-              "browserTarget": "project-management-app:build:development"
+              "browserTarget": "lang-app:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -84,7 +84,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "project-management-app:build"
+            "browserTarget": "lang-app:build"
           }
         },
         "test": {
@@ -118,7 +118,7 @@
       }
     }
   },
-  "defaultProject": "project-management-app",
+  "defaultProject": "lang-app",
   "cli": {
     "defaultCollection": "@angular-eslint/schematics"
   }

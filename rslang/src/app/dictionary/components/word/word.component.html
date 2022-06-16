@@ -1,36 +1,55 @@
-<div
-  class="card-wrapper"
-  *ngFor="
-    let word of apiService.words | paginate: { itemsPerPage: 20, currentPage: apiService.currentPage, totalItems: 600 }
-  "
->
-  <div class="div">
-    <div class="word-wrapper">
-      <button type="button" class="sound" [id]="word.id" (click)="playAudio(word.id)"></button>
-      <span class="word">{{ word.word }}</span>
-      <span class="word-transcription"> {{ word.transcription }}</span>
-      <span class="word-translate">{{ word.wordTranslate }}</span>
+<div class="card" [ngClass]="none">
+  <img class="card-image" src="https://rslang-team32.herokuapp.com/{{ word.image }}" alt="рр" />
+  <div class="card-content">
+    <div class="word">
+      <button class="word__sound" type="button" [id]="word.id" (click)="playAudio(word.id)"></button>
+      <span class="word__word">{{ word.word }}</span>
+      <span class="word__transcription"> {{ word.transcription }}</span>
+      <span class="word__translate">{{ word.wordTranslate }}</span>
     </div>
-    <p class="word-title">Значение:</p>
-    <p [innerHtml]="word.textMeaning"></p>
-    <p>{{ word.textMeaningTranslate }}</p>
-    <p class="word-title">Пример:</p>
-    <p [innerHtml]="word.textExample"></p>
-    <p>{{ word.textExampleTranslate }}</p>
-    <div class="answers">answers</div>
-    <div class="button-wrapper ${buttonsClass}">
-      <button type="button" class="add-to-difficult" [id]="word.id" (click)="addToDifficultAction(word.id)">
-        Добавить в сложные
-      </button>
+    <h3 class="word__subtitle">Значение:</h3>
+    <p class="word__text" [innerHtml]="word.textMeaning"></p>
+    <p class="word__text">{{ word.textMeaningTranslate }}</p>
+    <h3 class="word__subtitle">Пример:</h3>
+    <p class="word__text" [innerHtml]="word.textExample"></p>
+    <p class="word__text">{{ word.textExampleTranslate }}</p>
+    <div *ngIf="apiService.currentGroup !== 6" class="button-wrapper">
+      <button
+        class="word__to-difficult"
+        type="button"
+        *ngIf="
+          word.userWord?.difficulty === 'hard' ||
+          !word.userWord?.difficulty ||
+          word.userWord?.difficulty === 'inProgress'
+        "
+        [id]="word.id"
+        (click)="addToDifficultAction(word.id)"
+        [innerText]="word.userWord?.difficulty === 'hard' ? 'Сложное слово' : 'Добавить в сложные'"
+        [disabled]="word.userWord?.difficulty === 'hard'"
+      ></button>
       <button
         type="button"
-        class="add-to-studied ${studiedClass} ${hideStudiedBtn}"
+        class="word__to-learned"
+        *ngIf="
+          word.userWord?.difficulty === 'learned' ||
+          !word.userWord?.difficulty ||
+          word.userWord?.difficulty === 'inProgress'
+        "
         [id]="word.id"
-        (click)="addToStudiedAction(word.id)"
-      >
-        Добавить в изученные
-      </button>
+        (click)="addToLearnedAction(word.id)"
+        [innerText]="word.userWord?.difficulty === 'learned' ? 'Изученное слово' : 'Добавить в изученные'"
+        [disabled]="word.userWord?.difficulty === 'learned'"
+      ></button>
+    </div>
+
+    <div *ngIf="apiService.currentGroup === 6" class="button-wrapper">
+      <button
+        type="button"
+        class="word__from-difficult"
+        [id]="word.id"
+        (click)="deleteFromDifficultAction(word.id)"
+        [innerText]="'Удалить из сложных'"
+      ></button>
     </div>
   </div>
-  <img class="word-image" src="https://rslang-team32.herokuapp.com/{{ word.image }}" alt="рр" />
 </div>
