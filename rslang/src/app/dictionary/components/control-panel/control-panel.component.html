@@ -1,6 +1,6 @@
 <div class="panel">
   <div class="controls">
-    <select class="chapter-select" name="" id="" (change)="handleSelectEvent($event)">
+    <select class="chapter-select" (change)="handleSelectEvent($event)" [selectedIndex]="apiService.currentGroup">
       <option value="0">А1 - Beginner</option>
       <option value="1">A2 - Elementary</option>
       <option value="2">B1 - Intermediate</option>

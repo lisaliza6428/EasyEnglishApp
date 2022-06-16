@@ -16,8 +16,8 @@ export class ControlPanelComponent {
   handleSelectEvent(e: Event) {
     const group = +(e.target as HTMLSelectElement).value;
     this.apiService.currentGroupChange.next(group);
+    localStorage.setItem('app-group', group.toString());
     if (group === 6) {
-      console.log('difficult');
       this.apiService.getUserHardWords();
     } else {
       this.apiService.getWords();
@@ -27,6 +27,7 @@ export class ControlPanelComponent {
   pageChangeEvent(page: number) {
     this.currentPage = page;
     this.apiService.currentPageChange.next(this.currentPage);
+    localStorage.setItem('app-page', page.toString());
     this.apiService.getWords();
   }
 }

@@ -10,6 +10,10 @@ export class DictionaryPageComponent implements OnInit {
   constructor(public apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.apiService.getWords();
+    if (this.apiService.currentGroup === 6) {
+      this.apiService.getUserHardWords();
+    } else {
+      this.apiService.getWords();
+    }
   }
 }

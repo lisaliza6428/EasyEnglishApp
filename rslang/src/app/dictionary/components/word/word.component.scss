@@ -50,12 +50,12 @@
   align-items: center;
   justify-content: center;
   * {
-    margin-right: 20px;
+    margin: 0 7px;
   }
   @media screen and (max-width: 650px) {
-    flex-wrap: wrap;
+/*     flex-wrap: wrap;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: flex-start; */
   }
   .word__sound {
     width: 40px;
@@ -79,6 +79,10 @@
   }
   .word__transcription {
     color: #aa06e0;
+  }
+  .word__statistics {
+    width: 26px;
+    filter: brightness(0) saturate(100%) invert(10%) sepia(33%) saturate(6988%) hue-rotate(277deg) brightness(84%) contrast(111%);
   }
 }
 

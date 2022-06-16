@@ -36,6 +36,24 @@ export class ApiService {
       this.currentGroup = value;
     });
     this.getUserId();
+    this.getDictionaryNavigation();
+  }
+
+  getDictionaryNavigation() {
+    const group = localStorage.getItem('app-group');
+    if (!group) {
+      this.currentGroup = 0;
+    } else {
+      console.log(group);
+      this.currentGroup = +group;
+    }
+    const page = localStorage.getItem('app-page');
+    if (!page) {
+      this.currentPage = 1;
+    } else {
+      console.log(page);
+      this.currentPage = +page;
+    }
   }
 
   getUserId() {
@@ -59,7 +77,7 @@ export class ApiService {
         .subscribe((value) => {
           const filtered = value[0].paginatedResults.sort((a: WordModel, b: WordModel) => a.word.localeCompare(b.word));
           this.words = filtered;
-          console.log(filtered);
+          //console.log(filtered);
         });
     } else {
       this.http
@@ -68,7 +86,7 @@ export class ApiService {
         )
         .subscribe((value) => {
           this.words = value.sort((a: WordModel, b: WordModel) => a.word.localeCompare(b.word));
-          console.log(this.words);
+          //console.log(this.words);
         });
     }
   }
