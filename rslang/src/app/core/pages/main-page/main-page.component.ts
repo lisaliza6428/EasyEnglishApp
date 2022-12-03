@@ -2,10 +2,10 @@ import { Component } from '@angular/core';
 import { AuthService } from '../../../auth/services/auth.service';
 
 @Component({
-  selector: 'app-welcome-page',
-  templateUrl: './welcome-page.component.html',
-  styleUrls: ['./welcome-page.component.scss'],
+  selector: 'app-main-page',
+  templateUrl: './main-page.component.html',
+  styleUrls: ['./main-page.component.scss'],
 })
-export class WelcomePageComponent {
+export class MainPageComponent {
   constructor(public authService: AuthService) {}
 }

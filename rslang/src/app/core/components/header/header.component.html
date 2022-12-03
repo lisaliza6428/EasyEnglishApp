@@ -7,10 +7,24 @@
           <img class="header__user-icon" src="../../../../assets/svg/user.svg" alt="user" />
           <span class="header__user-name">{{ name }}</span>
         </div>
-        <app-auth-button></app-auth-button>
-        <button class="header__button header__button--out" *ngIf="authService.isLogged" (click)="openDialog()">
-          Выйти
-        </button>
+        <img
+          *ngIf="!authService.isLogged"
+          routerLink="../auth/log-in"
+          class="header__button"
+          src="../../../../assets/log-in.svg"
+          alt=""
+          width="30"
+          title="Log In"
+        />
+        <img
+          *ngIf="authService.isLogged"
+          class="header__button"
+          src="../../../../assets/exit.svg"
+          alt=""
+          width="30"
+          title="Log Out"
+          (click)="openDialog()"
+        />
       </div>
     </div>
   </div>

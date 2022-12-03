@@ -19,6 +19,8 @@ export class WordComponent {
   }
 
   addToDifficultAction(wordId: string) {
+    console.log(this.word);
+    
     if (this.word.userWord) {
       this.word.userWord.difficulty = 'hard';
       this.apiService.updateUserWord(wordId, this.word.userWord);

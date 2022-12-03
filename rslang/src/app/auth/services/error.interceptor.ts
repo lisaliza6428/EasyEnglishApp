@@ -30,10 +30,15 @@ export class ErrorInterceptor implements HttpInterceptor {
             this.error403Action();
             break;
 
+          case 404:
+            this.error404Action();
+            break;
+
           case 409:
             this.error409Action();
             break;
         }
+        console.log(error);
         return throwError(error);
       })
     );
@@ -42,8 +47,8 @@ export class ErrorInterceptor implements HttpInterceptor {
   getToken() {
     const data = localStorage.getItem('token') || '';
     if (data) {
-      const token = JSON.parse(data).refreshToken;
-      //const token = JSON.parse(data).token;
+      //const token = JSON.parse(data).refreshToken;
+      const token = JSON.parse(data).token;
       return token;
     }
   }
@@ -62,6 +67,19 @@ export class ErrorInterceptor implements HttpInterceptor {
   }
 
   error403Action() {
+    console.log('fgfgfdgdfg');
+    
+    const dialogConfig = new MatDialogConfig();
+    dialogConfig.data = {
+      name: 'error403',
+      message: 'Неправильные email или пароль',
+      actionButtonText: 'Ок',
+      cancelButtonText: 'Закрыть',
+    };
+    this.dialog.open(ModalComponent, dialogConfig);
+  }
+
+  error404Action() {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.data = {
       name: 'error403',

@@ -44,14 +44,14 @@ export class ApiService {
     if (!group) {
       this.currentGroup = 0;
     } else {
-      console.log(group);
+      //console.log(group);
       this.currentGroup = +group;
     }
     const page = localStorage.getItem('app-page');
     if (!page) {
       this.currentPage = 1;
     } else {
-      console.log(page);
+      //console.log(page);
       this.currentPage = +page;
     }
   }

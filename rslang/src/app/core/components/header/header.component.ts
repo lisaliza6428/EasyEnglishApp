@@ -31,6 +31,7 @@ export class HeaderComponent implements OnInit {
       actionButtonText: 'Да, выйти',
       cancelButtonText: 'Отмена',
     };
+    console.log(dialogConfig);
     this.dialog.open(ModalComponent, dialogConfig);
   }
 }

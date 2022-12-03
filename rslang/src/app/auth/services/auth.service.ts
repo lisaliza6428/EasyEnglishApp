@@ -56,7 +56,7 @@ export class AuthService {
       localStorage.setItem('token', JSON.stringify(value));
       this.isLogged = true;
       this.getUserName();
-      this.router.navigate(['welcome']);
+      this.router.navigate(['main']);
       console.log(value);
     });
   }

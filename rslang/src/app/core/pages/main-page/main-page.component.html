@@ -1,0 +1,16 @@
+<div class="container">
+  <div class="content">
+    <div class="wrapper1">
+      <h1>Easy English</h1>
+      <p class="descr">Не теряй время!</p>
+      <p class="descr">Улучшай английский просто и интересно</p>
+      <p class="descr">вместе с приложением Easy English</p>
+      <p class="descr" *ngIf="!authService.isLogged">Вам нужно авторизоваться, чтобы начать:</p>
+      <button class="nav__link" *ngIf="!authService.isLogged" routerLink="../auth/log-in">Вход / Регистрация</button>
+      <button class="nav__link" *ngIf="authService.isLogged" routerLink="/dictionary">Перейти к учебнику</button>
+    </div>
+    <div class="image">
+      <img src="../../../../assets/2.svg" alt="img" width="400" />
+    </div>
+  </div>
+</div>

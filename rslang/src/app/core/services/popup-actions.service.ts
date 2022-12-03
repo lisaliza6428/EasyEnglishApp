@@ -11,6 +11,7 @@ export class PopupActionsService {
     switch (modalData.name) {
       case 'logout':
         this.authService.logOut();
+        console.log('logout');
         break;
 
       case 'deleteProfile':

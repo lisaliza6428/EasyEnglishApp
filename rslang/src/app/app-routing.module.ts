@@ -2,7 +2,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { ErrorPageComponent } from './core/pages/error-page/error-page.component';
-import { WelcomePageComponent } from './core/pages/welcome-page/welcome-page.component';
+import { MainPageComponent } from './core/pages/main-page/main-page.component';
 import { GamesPageComponent } from './core/pages/games-page/games-page.component';
 import { StatisticsPageComponent } from './core/pages/statistics-page/statistics-page.component';
 
@@ -17,8 +17,8 @@ const routes: Routes = [
     loadChildren: () => import('./auth/auth.module').then((m) => m.AuthModule),
   },
   {
-    path: 'welcome',
-    component: WelcomePageComponent,
+    path: 'main',
+    component: MainPageComponent,
   },
   {
     path: 'games',

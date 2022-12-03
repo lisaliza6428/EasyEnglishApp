@@ -1,6 +1,12 @@
 .content {
-  min-height: calc(100vh - 55px);
-  //background-color: #320d3e;
-  background-color:#fefefe;
-}
+  min-height: calc(100vh - 45px);
+  color: black;
 
+  &.main {
+    background-color: rgb(251, 245, 124);
+  }
+
+  &.dictionary {
+    background-color: rgb(254, 254, 244);
+  }
+}

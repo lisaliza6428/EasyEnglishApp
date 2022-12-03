@@ -1,23 +1,26 @@
 footer {
-  background-color: #320d3e;
+ background-color: rgba(41, 40, 40, 0.95);
 }
+
 .footer {
-  height: 55px;
+  height: 45px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-weight: 500;
   color: aliceblue;
+  font-weight: 600;
 }
+
 a {
   color: aliceblue;
   text-decoration: none;
+  font-weight: 500;
 }
 
 .footer__school-logo {
-  width: 90px;
+  width: 70px;
   filter: brightness(0) saturate(100%) invert(100%) sepia(100%) saturate(1%) hue-rotate(327deg) brightness(102%)
-  contrast(101%);
+  contrast(101%); 
 }
 .footer__dev {
   display: flex;
